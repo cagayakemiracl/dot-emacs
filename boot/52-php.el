@@ -26,21 +26,21 @@
 
 ;; php
 (require 'php-mode)
-;(require 'php-completion)
+(require 'php-completion)
 (setq php-mode-force-pear t) ;PEAR規約のインデント設定にする
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode)) ;*.phpのファイルのときにphp-modeを自動起動する
 
 ;; php
-;(add-hook 'php-mode-hook
-;		  (lambda ()
-;			(php-completion-mode t)
-;			(define-key php-mode-map (kbd "C-o") 'phpcmp-complete) ;php-completionの補完実行キーバインドの設定
-;			(make-local-variable 'ac-sources)
-;			(setq ac-sources '(
-;							   ac-source-words-in-same-mode-buffers
-;							   ac-source-php-completion
-;							   ac-source-filename
-;							   ))))
+(add-hook 'php-mode-hook
+		  (lambda ()
+			(php-completion-mode t)
+			(define-key php-mode-map (kbd "C-o") 'phpcmp-complete) ;php-completionの補完実行キーバインドの設定
+			(make-local-variable 'ac-sources)
+			(setq ac-sources '(
+							   ac-source-words-in-same-mode-buffers
+							   ac-source-php-completion
+							   ac-source-filename
+							   ))))
 
 ;; rainbow mode
 (add-hook 'php-mode-hook 'rainbow-mode)

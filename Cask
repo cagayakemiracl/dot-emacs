@@ -92,7 +92,15 @@
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")
 (depends-on "textlint" :git "https://github.com/DamienCassou/textlint")
 
-;(depends-on "processing2-emacs" :git "https://github.com/ptrv/processing2-emacs")
+(depends-on "php-completion"
+        :git "https://github.com/suzuki/php-completion.git"
+        :branch "develop"
+        :files ("*.el" "phpcmp-index-of-*"))
+		
+(depends-on "processing2-emacs"
+			:git "https://github.com/ptrv/processing2-emacs"
+			:files ("*.el" "snippets"))
+
 ;(depends-on "verilog-yas" :git "https://github.com/trairia/verilog-yas.git")
 ;(depends-on "yasnippet-coffee-script-snippets" :git "https://github.com/jarrelcobb/yasnippet-coffee-script-snippets.git")
 ;(depends-on "js-yasnippets" :git "https://github.com/azer/js-yasnippets.git")
