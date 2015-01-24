@@ -54,14 +54,10 @@
   (setq ac-sources '(ac-source-clang-async))
     (setq ac-clang-cflags
         (mapcar (lambda (item)(concat "-I" item))
-                (split-string
-                 "
-/usr/include/
+                (split-string "/usr/include/
 /usr/local/include/
 /usr/include/QtCore/
-/usr/include/QtGui/
-"
-                 )))
+/usr/include/QtGui/")))
   (ac-clang-launch-completion-process)
   )
 (add-hook 'c-mode-hook 'ac-cc-mode-setup)
