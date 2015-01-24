@@ -24,57 +24,45 @@
 
 ;;; Code:
 
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
 (require 'google-c-style)
-(add-hook 'c-mode-hook 'google-set-c-style)
-(add-hook 'c++-mode-hook 'google-set-c-style)
-(add-hook 'c-mode-hook 'google-make-newline-indent)
-(add-hook 'c++-mode-hook 'google-make-newline-indent)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; eldoc
 (load "c-eldoc")
 (setq c-eldoc-cpp-command "/usr/bin/cpp")
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
 
-;; auto complete
-(require 'auto-complete-c-headers)
-(defun my:ac-c-header-init ()
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/include/")
-  (add-to-list 'achead:include-directories '"/usr/local/include/")
-  (add-to-list 'achead:include-directories '"/usr/include/qt4/QtCore/")
-  (add-to-list 'achead:include-directories '"/usr/include/qt4/QtGui/")
-  )
-; now let's call this function from c/c++ hooks
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(defun get-include-dirs ()
+  (let* ((command-result (shell-command-to-string "echo \"\" | g++ -v -x c++ -E -"))
+         (start-string "#include <...> search starts here:\n")
+         (end-string "End of search list.\n")
+         (start-pos (string-match start-string command-result))
+         (end-pos (string-match end-string command-result))
+         (include-string (substring command-result (+ start-pos (length start-string)) end-pos)))
+    (split-string include-string)))
 
+(require 'auto-complete-c-headers)
 (require 'auto-complete-clang-async)
 (defun ac-cc-mode-setup ()
   (setq ac-clang-complete-executable "/usr/local/bin/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-    (setq ac-clang-cflags
-        (mapcar (lambda (item)(concat "-I" item))
-                (split-string "/usr/include/
-/usr/local/include/
-/usr/include/qt4/QtCore/
-/usr/include/qt4/QtGui/")))
+  (setq ac-sources (append '(ac-source-clang-async ac-source-c-headers) ac-sources))
+  (setq ac-clang-cflags
+        (mapcar (lambda (item)(concat "-I" item)) (get-include-dirs)))
   (ac-clang-launch-completion-process)
   )
-(add-hook 'c-mode-hook 'ac-cc-mode-setup)
-(add-hook 'c++-mode-hook 'ac-cc-mode-setup)
+(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+(add-hook 'auto-complete-mode-hook 'ac-common-setup)
 
-(add-hook 'c-mode-common-hook
-		  (lambda ()
-			(setq flycheck-clang-include-path
-				  '("."
-					"/usr/include/"
-					"/usr/local/include/"
-					"/usr/include/qt4/QtCore"
-					"/usr/include/qt4/QtGui"))))
+(defun flycheck-cc-mode-setup ()
+  (setq flycheck-clang-include-path (list "." ".." "../include" "include" "/usr/local/include/QtGui" "/usr/local/include/QtCore"))
+  )
+(add-hook 'c-mode-common-hook 'flycheck-cc-mode-setup)
 
 ;; ctags update
 (add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
-
 (add-hook 'c-mode-common-hook 'highlight-symbol-mode)
 
 (provide '50-c)
