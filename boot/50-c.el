@@ -41,8 +41,8 @@
   (add-to-list 'ac-sources 'ac-source-c-headers)
   (add-to-list 'achead:include-directories '"/usr/include/")
   (add-to-list 'achead:include-directories '"/usr/local/include/")
-  (add-to-list 'achead:include-directories '"/usr/include/QtCore/")
-  (add-to-list 'achead:include-directories '"/usr/include/QtGui/")
+  (add-to-list 'achead:include-directories '"/usr/include/qt4/QtCore/")
+  (add-to-list 'achead:include-directories '"/usr/include/qt4/QtGui/")
   )
 ; now let's call this function from c/c++ hooks
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
@@ -56,8 +56,8 @@
         (mapcar (lambda (item)(concat "-I" item))
                 (split-string "/usr/include/
 /usr/local/include/
-/usr/include/QtCore/
-/usr/include/QtGui/")))
+/usr/include/qt4/QtCore/
+/usr/include/qt4/QtGui/")))
   (ac-clang-launch-completion-process)
   )
 (add-hook 'c-mode-hook 'ac-cc-mode-setup)
@@ -69,8 +69,8 @@
 				  '("."
 					"/usr/include/"
 					"/usr/local/include/"
-					"/usr/include/QtCore"
-					"/usr/include/QtGui"))))
+					"/usr/include/qt4/QtCore"
+					"/usr/include/qt4/QtGui"))))
 
 ;; ctags update
 (add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
