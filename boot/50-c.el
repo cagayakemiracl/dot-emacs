@@ -39,8 +39,10 @@
 (require 'auto-complete-c-headers)
 (defun my:ac-c-header-init ()
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/local/include/")
   (add-to-list 'achead:include-directories '"/usr/include/")
+  (add-to-list 'achead:include-directories '"/usr/local/include/")
+  (add-to-list 'achead:include-directories '"/usr/include/QtCore/")
+  (add-to-list 'achead:include-directories '"/usr/include/QtGui/")
   )
 ; now let's call this function from c/c++ hooks
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
@@ -56,6 +58,8 @@
                  "
 /usr/include/
 /usr/local/include/
+/usr/include/QtCore/
+/usr/include/QtGui/
 "
                  )))
   (ac-clang-launch-completion-process)
@@ -65,9 +69,12 @@
 
 (add-hook 'c-mode-common-hook
 		  (lambda ()
-			 (setq flycheck-clang-include-path
-				   '("/usr/include/"
-					 "/usr/local/include/"))))
+			(setq flycheck-clang-include-path
+				  '("."
+					"/usr/include/"
+					"/usr/local/include/"
+					"/usr/include/QtCore"
+					"/usr/include/QtGui"))))
 
 ;; ctags update
 (add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
