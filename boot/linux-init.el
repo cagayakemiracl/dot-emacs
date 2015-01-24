@@ -1,9 +1,9 @@
-;;; init.el --- init.el
+;;; linux-config.el ---                              -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014  Hiromasa Nakahara
+;; Copyright (C) 2015  Hiromasa Nakahara
 
 ;; Author: Hiromasa Nakahara <cagayakemiracl@gmail.com>
-;; Keywords:
+;; Keywords: config
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,14 +24,7 @@
 
 ;;; Code:
 
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(require 'pallet)
-(pallet-mode t)
+(set-frame-parameter nil 'fullscreen 'maximized)
 
-(require 'init-loader)
-(init-loader-load "~/.emacs.d/boot/")
-(setq init-loader-show-log-after-init t)
-
-(provide 'init)
-;;; init.el ends here
+(provide 'linux-config)
+;;; linux-config.el ends here
