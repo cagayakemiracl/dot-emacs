@@ -89,8 +89,7 @@
 (depends-on "rtags")
 (depends-on "robe")
 (depends-on "enh-ruby-mode")
-(depends-on "anaconda-mode")
-(depends-on "company-anaconda")
+(depends-on "jedi")
 
 (depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")

@@ -28,13 +28,14 @@
 
 ;; flycheck
 (require 'flycheck-pyflakes)
+(require 'jedi)
+
 (add-hook 'python-mode-hook 'flycheck-mode)
 (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 
-(add-to-list 'company-backends 'company-anaconda)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'eldoc-mode)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
