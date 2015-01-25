@@ -44,20 +44,14 @@
          (include-string (substring command-result (+ start-pos (length start-string)) end-pos)))
     (split-string include-string)))
 
-(require 'auto-complete-c-headers)
-(require 'auto-complete-clang-async)
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "/usr/local/bin/clang-complete")
-  (setq ac-sources (append '(ac-source-clang-async ac-source-c-headers) ac-sources))
-  (setq ac-clang-cflags
-        (mapcar (lambda (item)(concat "-I" item)) (get-include-dirs)))
-  (ac-clang-launch-completion-process)
-  )
-(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-(add-hook 'auto-complete-mode-hook 'ac-common-setup)
+(setq all-include-dir (append '("." "/usr/local/include/QtGui" "/usr/local/include/QtCore") (get-include-dirs)))
+
+(require 'company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+(setq company-c-headers-path-system all-include-dir)
 
 (defun flycheck-cc-mode-setup ()
-  (setq flycheck-clang-include-path (list "." ".." "../include" "include" "/usr/local/include/QtGui" "/usr/local/include/QtCore"))
+  (setq flycheck-clang-include-path all-include-dir)
   )
 (add-hook 'c-mode-common-hook 'flycheck-cc-mode-setup)
 

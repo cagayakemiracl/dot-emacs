@@ -32,6 +32,10 @@
 (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 
+(add-to-list 'company-backends 'company-anaconda)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'eldoc-mode)
+
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 

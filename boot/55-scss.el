@@ -40,10 +40,10 @@
 					'(lambda() (scss-custom)))
 
 ;; auto complete
-(add-to-list 'ac-modes 'scss-mode)
-(add-hook 'scss-mode-hook
-		  '(lambda ()
-			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/scss-mode")))
+;(add-to-list 'ac-modes 'scss-mode)
+;(add-hook 'scss-mode-hook
+;		  '(lambda ()
+;			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/scss-mode")))
 
 ;; rainbow mode
 (add-hook 'scss-mode-hook 'rainbow-mode)

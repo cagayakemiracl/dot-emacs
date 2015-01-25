@@ -70,11 +70,11 @@
   (end-of-line))
 
 ;; auto complete
-(add-to-list 'ac-modes 'enh-ruby-mode)
-(add-hook 'enh-ruby-mode-hook
-		  '(lambda ()
-			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/enh-ruby-mode")
-			 ))
+;(add-to-list 'ac-modes 'enh-ruby-mode)
+;(add-hook 'enh-ruby-mode-hook
+;		  '(lambda ()
+;			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/enh-ruby-mode")
+;			 ))
 
 ;; highlight-indentation
 (add-hook 'enh-ruby-mode-hook 'highlight-indentation-mode)
@@ -82,11 +82,10 @@
 ;; rode
 (require 'robe)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+(push 'company-robe company-backends)
 
 ;; ctags update
 (add-hook 'enh-ruby-mode-hook 'turn-on-ctags-auto-update-mode)
-
 (add-hook 'enh-ruby-mode-hook 'highlight-symbol-mode)
 
 ;(require 'rcodetools)

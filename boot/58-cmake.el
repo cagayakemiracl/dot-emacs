@@ -26,9 +26,8 @@
 (add-to-list 'load-path "~/.emacs.d/git/cmake-font-lock")
 
 (require 'cmake-mode); Add cmake listfile names to the mode list.
-(require 'cpputils-cmake)
-(require 'cmake-ide)
-(require 'rtags)
+;(require 'cmake-ide)
+;(require 'rtags)
 
 (setq auto-mode-alist
 	  (append
@@ -36,18 +35,10 @@
 	   '(("\\.cmake\\'" . cmake-mode))
 	   auto-mode-alist))
 
-(add-hook 'cmake-mode-hook (function (lambda () (company-mode 1))))
+(autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
+(add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
-(autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
-(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)
-
-;(add-hook 'c-mode-common-hook
-;          (lambda ()
-;            (if (derived-mode-p 'c-mode 'c++-mode)
-;                (cppcm-reload-all)
-;              )))
-
-(cmake-ide-setup)
+;(cmake-ide-setup)
 
 (provide '58-cmake)
 ;;; 58-cmake.el ends here

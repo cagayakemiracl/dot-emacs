@@ -31,6 +31,7 @@
 (add-to-list 'auto-mode-alist '("\\.psgi$" . cperl-mode))
 (add-to-list 'auto-mode-alist '("^cpanfile$" . cperl-mode))
 
+(add-to-list 'ac-modes 'cperl-mode)
 (add-hook  'cperl-mode-hook (lambda ()                            
                               (add-to-list 'ac-sources 'ac-source-perl-completion)
                               (perl-completion-mode t)))

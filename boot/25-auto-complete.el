@@ -27,7 +27,7 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
-(ac-config-default)
+;(ac-config-default)
 (setq-default ac-sources
               '(ac-source-yasnippet
                 ac-source-abbrev

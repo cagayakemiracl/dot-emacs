@@ -27,11 +27,14 @@
 (require 'company)
 ;(require 'company-bundled-completions)
 ;(company-install-bundled-completions-rules)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; RET で補完の確定
 (define-key company-active-map (kbd "") 'company-expand-top)
-;; M-h で明示的に補完候補の表示
-(define-key company-mode-map "\M-h" 'company-start-showing)
+(define-key company-active-map (kbd "\C-n") 'company-select-next)
+(define-key company-active-map (kbd "\C-p") 'company-select-previous)
+(define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+(define-key company-active-map (kbd "<tab>") 'company-complete)
 
 (provide '25-company)
 ;;; 25-company.el ends here

@@ -1,5 +1,6 @@
 (source gnu)
 (source melpa)
+(source marmalade)
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -43,6 +44,7 @@
 (depends-on "auto-capitalize")
 (depends-on "auto-complete")
 (depends-on "company")
+(depends-on "company-c-headers")
 (depends-on "ctags")
 (depends-on "eldoc")
 (depends-on "flycheck-pos-tip")
@@ -86,11 +88,17 @@
 (depends-on "cmake-ide")
 (depends-on "rtags")
 (depends-on "robe")
+(depends-on "enh-ruby-mode")
+(depends-on "anaconda-mode")
+(depends-on "company-anaconda")
 
 (depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
-(depends-on "cmake-font-lock" :git "https://github.com/Lindydancer/cmake-font-lock")
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")
 (depends-on "textlint" :git "https://github.com/DamienCassou/textlint")
+
+(depends-on "cmake-font-lock"
+			:git "https://github.com/Lindydancer/cmake-font-lock"
+			:files ("*.el" "bin"))
 
 (depends-on "php-completion"
         :git "https://github.com/suzuki/php-completion.git"
