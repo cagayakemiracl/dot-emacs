@@ -4,8 +4,8 @@
 # Packaging
 .cask
 
-ac-comphist.dat
+ac-comphist*
 auto-save-list
 
 \#*\#
-recentf
+recentf*
