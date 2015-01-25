@@ -90,6 +90,8 @@
 (depends-on "robe")
 (depends-on "enh-ruby-mode")
 (depends-on "jedi")
+(depends-on "omnisharp")
+(depends-on "csharp-mode")
 
 (depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")
