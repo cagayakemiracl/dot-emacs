@@ -92,6 +92,8 @@
 (depends-on "jedi")
 (depends-on "omnisharp")
 (depends-on "csharp-mode")
+(depends-on "emacs-eclim")
+(depends-on "flycheck-tip")
 
 (depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")

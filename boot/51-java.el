@@ -22,19 +22,23 @@
 
 ;; 
 
+(require 'eclim)
+(global-eclim-mode)
+(add-hook 'java-mode-hook 'eclim-mode)
+(require 'eclimd)
+
+;(require 'ac-emacs-eclim-source)
+;(ac-emacs-eclim-config)
+
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
+
+;; 各自の環境に合わせてリンクを貼る
+(setq eclim-eclipse-dirs "~/.emacs.d/eclipse")
+(setq eclim-executable "~/.emacs.d/eclipse/eclim")
+(setq eclimd-executable "~/.emacs.d/eclipse/eclimd")
+(setq eclimd-default-workspace "~/workspace")
+
+;(start-eclimd eclimd-default-workspace)
+
 ;;; Code:
-
-(require 'malabar-mode)
-
-(defun malabar-mode-bootstrap ()
-  (require 'cedet)
-  (require 'semantic)
-  (load "semantic/loaddefs.el")
-  (semantic-mode 1)
-;  (load "malabar-flycheck")
-  (auto-complete-mode)
-;  (flymake-mode-on)
-  (malabar-mode))
-(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode-bootstrap))
-
-;;; init-java.el ends here

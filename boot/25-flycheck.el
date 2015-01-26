@@ -26,12 +26,17 @@
 
 ;; flycheck
 (require 'flycheck)
-(require 'flycheck-pos-tip)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+
+(require 'flycheck-pos-tip)
 (eval-after-load 'flycheck
   '(custom-set-variables
 	'(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
+
+;(require 'flycheck-tip)
+;(define-key global-map (kbd "C-c C-n") 'error-tip-cycle-dwim)
+;(define-key global-map (kbd "C-c C-p") 'error-tip-cycle-dwim-reverse)
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here
