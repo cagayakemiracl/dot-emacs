@@ -27,8 +27,14 @@
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
 (require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;(add-hook 'c-mode-common-hook 'google-set-c-style)
+;(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+(add-hook 'c-mode-hook 'google-set-c-style)
+(add-hook 'c-mode-hook 'google-make-newline-indent)
+
+(add-hook 'c++-mode-hook 'google-set-c-style)
+(add-hook 'c++-mode-hook 'google-make-newline-indent)
 
 ;; eldoc
 (load "c-eldoc")
