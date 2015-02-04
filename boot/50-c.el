@@ -42,7 +42,7 @@
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
 
 (defun get-include-dirs ()
-  (let* ((command-result (shell-command-to-string "echo \"\" | g++ -v -x c++ -E -"))
+  (let* ((command-result (shell-command-to-string "echo \"\" | clang++ -v -x c++ -E -"))
          (start-string "#include <...> search starts here:\n")
          (end-string "End of search list.\n")
          (start-pos (string-match start-string command-result))
@@ -51,19 +51,37 @@
     (split-string include-string)))
 
 (setq all-include-dir (append '("." "/usr/local/include/QtGui" "/usr/local/include/QtCore") (get-include-dirs)))
+(setq my-c-flags
+	  (mapcar (lambda (item) (concat "-I" item)) all-include-dir))
 
 (require 'company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
 (setq company-c-headers-path-system all-include-dir)
 
 (defun flycheck-cc-mode-setup ()
+  (setq flycheck-clang-language-standard "c++11")
+  ;(setq flycheck-clang-standard-library "libc++")
   (setq flycheck-clang-include-path all-include-dir)
   )
 (add-hook 'c-mode-common-hook 'flycheck-cc-mode-setup)
 
 ;; ctags update
-(add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
+(add-hook 'c-mode-common-hook 'turn-on-ctags-auto-update-mode)
 (add-hook 'c-mode-common-hook 'highlight-symbol-mode)
+
+(setq company-clang-arguments '("-std=c++11" "-pthread"))
+(setq company-clang-arguments (append company-clang-arguments my-c-flags))
+	  
+;; Use this parameter as C++ default
+(quickrun-add-command "c++/c11"
+                      '((:command . "clang++")
+                        (:exec    . ("%c -std=c++11 -pthread %o -o %e %s"
+                                     "%e %a"))
+                        (:remove  . ("%e")))
+                      :default "c++")
+
+(require 'clang-format)
+(global-set-key  (kbd "<f6>") 'clang-format-region)
 
 (provide '50-c)
 ;;; 50-c.el ends here
