@@ -24,7 +24,6 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/git/textlint/")
 (require 'textlint)
 
 (global-set-key (kbd "<f9>") 'textlint-run)

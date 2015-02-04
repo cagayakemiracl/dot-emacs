@@ -23,8 +23,6 @@
 ;; 
 
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/git/cmake-font-lock")
-
 (require 'cmake-mode); Add cmake listfile names to the mode list.
 ;(require 'cmake-ide)
 ;(require 'rtags)

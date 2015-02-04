@@ -24,7 +24,6 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/git/processing2-emacs/")
 (autoload 'processing-mode "processing-mode" "Processing mode" t)
 (add-to-list 'auto-mode-alist '("\\.pde$" . processing-mode))
 
