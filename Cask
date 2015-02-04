@@ -94,6 +94,9 @@
 (depends-on "csharp-mode")
 (depends-on "emacs-eclim")
 (depends-on "flycheck-tip")
+(depends-on "haskell-mode")
+(depends-on "company-ghc")
+(depends-on "clang-format")
 
 (depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
 (depends-on "ruby-refactor" :git "https://github.com/ajvargo/ruby-refactor")

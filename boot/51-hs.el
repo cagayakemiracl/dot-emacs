@@ -25,11 +25,16 @@
 ;;; Code:
 
 (require 'haskell-mode)
-(require 'haskell-cabal)
+;(require 'haskell-cabal)
+;(require 'company-ghc)
 
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
+
+(setq haskell-program-name "/usr/local/bin/ghci")
+
+;(add-to-list 'company-backends 'company-ghc)
 
 (provide 'init-hs)
 ;;; init-hs.el ends here
