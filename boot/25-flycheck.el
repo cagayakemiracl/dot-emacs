@@ -34,6 +34,9 @@
   '(custom-set-variables
 	'(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
 
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
+
 ;(require 'flycheck-tip)
 ;(define-key global-map (kbd "C-c C-n") 'error-tip-cycle-dwim)
 ;(define-key global-map (kbd "C-c C-p") 'error-tip-cycle-dwim-reverse)
