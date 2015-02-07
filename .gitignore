@@ -10,3 +10,10 @@ auto-save-list
 \#*\#
 recentf*
 OmniSharpServer
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+deepin-emacs
