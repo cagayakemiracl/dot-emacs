@@ -165,7 +165,7 @@
 
 (defvar pyepc-browser
   (let* ((browser
-          (epc:start-epc (or (getenv "PYTHON") "python")
+          (epc:start-epc (or (getenv "PYTHON") "python3")
                          (list pyepc-file
                                (if webkit-enable-proxy-p "--enable-proxy" "--disable-proxy")))))
     (epc:call-deferred browser 'init (list (webkit-get-emacs-xid)))
