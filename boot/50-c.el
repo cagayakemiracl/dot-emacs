@@ -80,6 +80,7 @@
                       :default "c++")
 
 (require 'clang-format)
+(custom-set-variables '(clang-format-style "Google"))
 (global-set-key  (kbd "<f6>") 'clang-format-region)
 
 (provide '50-c)
