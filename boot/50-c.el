@@ -57,6 +57,8 @@
 (require 'company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
 (setq company-c-headers-path-system all-include-dir)
+(setq company-clang-arguments '("-std=c++11" "-pthread"))
+(setq company-clang-arguments (append company-clang-arguments my-c-flags))
 
 (defun flycheck-cc-mode-setup ()
   (setq flycheck-clang-language-standard "c++11")
@@ -68,9 +70,6 @@
 ;; ctags update
 (add-hook 'c-mode-common-hook 'turn-on-ctags-auto-update-mode)
 (add-hook 'c-mode-common-hook 'highlight-symbol-mode)
-
-(setq company-clang-arguments '("-std=c++11" "-pthread"))
-(setq company-clang-arguments (append company-clang-arguments my-c-flags))
 	  
 ;; Use this parameter as C++ default
 (quickrun-add-command "c++/c11"
