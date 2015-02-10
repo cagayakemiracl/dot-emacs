@@ -36,8 +36,8 @@
   )
 
 (add-hook 'anything-dired-mode-hook (lambda ()
-							 (define-key dired-mode-map " " 'do-ql-dwim)
-							 ))
+									  (define-key dired-mode-map " " 'do-ql-dwim)
+									  ))
 
 (provide 'cocoa-emacs-quick-look)
 ;;; cocoa-emacs-quick-look.el ends here
