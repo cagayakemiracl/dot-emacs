@@ -27,7 +27,7 @@
 (require 'markdown-mode)
 (setq auto-mode-alist (cons '("\\.md" . gfm-mode) auto-mode-alist))
 
-(setq markdown-command "mdown")
+(setq markdown-command "pandoc --mathjax -t html5 -s -c ~/.emacs.d/css/github.css")
 (setq markdown-xhtml-header-content "
 <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" 
 href=\"~/.emacs.d/css/github.css\" />
