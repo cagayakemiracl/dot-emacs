@@ -25,13 +25,13 @@
 ;;; Code:
 
 (require 'markdown-mode)
+(require 'pandoc-mode)
+
 (setq auto-mode-alist (cons '("\\.md" . gfm-mode) auto-mode-alist))
 
-(setq markdown-command "pandoc --mathjax -t html5 -s -c ~/.emacs.d/css/github.css")
-(setq markdown-xhtml-header-content "
-<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" 
-href=\"~/.emacs.d/css/github.css\" />
-")
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+
+(setq markdown-command "pandoc -f markdown -t html5 -s -c ~/.emacs.d/pandoc/github.css")
 
 (provide '56-markdown)
 ;;; 56-markdown.el ends here
