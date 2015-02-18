@@ -81,7 +81,7 @@
 
 (require 'clang-format)
 (custom-set-variables '(clang-format-style "Google"))
-(global-set-key  (kbd "<f6>") 'clang-format-region)
+(global-set-key  (kbd "<f6>") 'clang-format-buffer)
 
 (provide '50-c)
 ;;; 50-c.el ends here
