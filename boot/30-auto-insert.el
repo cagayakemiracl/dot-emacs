@@ -48,7 +48,7 @@
 (defvar template-replacements-alists
   '(("%file%"             . (lambda () (file-name-nondirectory (buffer-file-name))))
 	("%file-without-ext%" . (lambda () (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
-	("%include-guard%"    . (lambda () (format "_%s_H_" (upcase (file-name-sans-extension (file-name-nondirectory buffer-file-name))))))
+	("%include-guard%"    . (lambda () (format "%s_H_" (upcase (file-name-sans-extension (file-name-nondirectory buffer-file-name))))))
     ("%date%" . (lambda() (substring (current-time-string) -4)))
     ("%mail%" . (lambda () (identity user-mail-address)))
     ("%name%" . (lambda () (identity user-full-name)))

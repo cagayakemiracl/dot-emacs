@@ -1,12 +1,12 @@
 // Copyright (c) %date% %id% All Rights Reserved.
 // $Mail: <%mail%>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include "./%file-without-ext%.h"
 
-int main(void) {
+%file-without-ext%::%file-without-ext%(void) {
+  
+}
 
-  return 0;
+~%file-without-ext%::%file-without-ext%(void) {
+  
 }
