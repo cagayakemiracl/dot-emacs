@@ -37,9 +37,7 @@
 (setq file-name-coding-system 'utf-8-hfs)
 (setq locale-coding-system 'utf-8-hfs)
 
-;; for MacBook Air(Late2012) 11inch display
 (set-frame-position (selected-frame) 0 0)
-(set-frame-size (selected-frame) 191 51)
 
 (setq x-select-enable-primary t)
 
