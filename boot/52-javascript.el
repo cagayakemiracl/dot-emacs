@@ -24,12 +24,30 @@
 
 ;;; Code:
 
-;(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(require 'js2-mode)
+(require 'jquery-doc)
+(autoload 'tern-mode "tern" nil t)
 
-;; flycheck
-;(flycheck-add-next-checker 'javascript-jshint
-;                           'javascript-gjslint)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook
+          #'(lambda ()
+              (setq js2-basic-offset 2
+                    indent-tabs-mode nil)
+              ))
+
+(add-to-list 'ac-modes 'js2-mode)
+
+(add-hook 'js2-mode-hook 'jquery-doc-setup)
+
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (tern-mode t)))
+
+(eval-after-load 'tern
+	'(progn
+		 (require 'tern-auto-complete)
+		 (tern-ac-setup)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
