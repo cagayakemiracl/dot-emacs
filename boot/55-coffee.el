@@ -48,11 +48,11 @@
 
 
 ;; auto complete
-;(add-to-list 'ac-modes 'coffee-mode)
-;(add-hook 'coffee-mode-hook
-;		  '(lambda ()
-;			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/js2-mode")
-;			 ))
+(add-to-list 'ac-modes 'coffee-mode)
+(add-hook 'coffee-mode-hook
+		  '(lambda ()
+			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/js2-mode")
+			 ))
 
 ;; highlight-indentation
 (add-hook 'coffee-mode-hook 'highlight-indentation-current-column-mode)

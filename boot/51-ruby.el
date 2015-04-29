@@ -28,7 +28,6 @@
 (autoload 'enh-ruby-mode "enh-ruby-mode"
   "Mode for editing ruby source files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$latex " . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$latex " . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (setq interpreter-mode-alist (append '(("ruby" . enh-ruby-mode))
@@ -70,11 +69,11 @@
   (end-of-line))
 
 ;; auto complete
-;(add-to-list 'ac-modes 'enh-ruby-mode)
-;(add-hook 'enh-ruby-mode-hook
-;		  '(lambda ()
-;			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/enh-ruby-mode")
-;			 ))
+(add-to-list 'ac-modes 'enh-ruby-mode)
+(add-hook 'enh-ruby-mode-hook
+		  '(lambda ()
+			 (add-to-list 'ac-dictionary-files "~/.emacs.d/dict/enh-ruby-mode")
+			 ))
 
 ;; highlight-indentation
 (add-hook 'enh-ruby-mode-hook 'highlight-indentation-mode)
@@ -82,20 +81,11 @@
 ;; rode
 (require 'robe)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
-(push 'company-robe company-backends)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; ctags update
 (add-hook 'enh-ruby-mode-hook 'turn-on-ctags-auto-update-mode)
 (add-hook 'enh-ruby-mode-hook 'highlight-symbol-mode)
-
-;(require 'rcodetools)
-;(setq rct-find-tag-if-available nil)
-;(defun ruby-mode-hook-rcodetools ()
-;  (define-key enh-ruby-mode-map "\C-c\C-d" 'xmp)
-;  (define-key enh-ruby-mode-map "\M-\C-i" 'rct-complete-symbol)
-;  (define-key enh-ruby-mode-map "\C-c\C-t" 'ruby-toggle-buffer)
-;  (define-key enh-ruby-mode-map "\C-c\C-f" 'rct-ri))
-;(add-hook 'enh-ruby-mode-hook 'ruby-mode-hook-rcodetools)
 
 (require 'ruby-refactor)
 (add-hook 'enh-ruby-mode-hook 'ruby-refactor-mode-launch)

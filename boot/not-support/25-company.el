@@ -27,7 +27,7 @@
 (require 'company)
 ;(require 'company-bundled-completions)
 ;(company-install-bundled-completions-rules)
-(add-hook 'after-init-hook 'global-company-mode)
+;(add-hook 'after-init-hook 'global-company-mode)
 
 ;; RET で補完の確定
 (define-key company-active-map (kbd "") 'company-expand-top)
