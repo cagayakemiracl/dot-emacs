@@ -25,7 +25,8 @@
 ;;; Code:
 
 (require 'highlight-indentation)(setq highlight-indentation-offset 2) ;;default:4
-(set-face-background 'highlight-indentation-current-column-face "#ff0000") ;;default:#000000
+(set-face-background 'highlight-indentation-face "#646464")
+(set-face-background 'highlight-indentation-current-column-face "#ff9090") ;;default:#000000
 
 (provide 'init-highlight-indentation)
 ;;; init-highlight-indentation.el ends here
