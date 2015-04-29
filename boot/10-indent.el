@@ -25,14 +25,14 @@
 ;;; Code:
 
 ;; tab indent number
-(setq-default tab-width 4)
-(setq tab-width 4)
-(setq tab-stop-list
-	    '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+(setq-default tab-width 2)
+(setq indent-tabs-mode nil)
+(setq tab-width 2)
+;(setq tab-stop-list
+;	    '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
 (setq indent-line-function 'indent-relative-maybe)
 (column-number-mode t)
 (line-number-mode t)
-
 
 (provide 'init-indent)
 ;;; init-indent.el ends here
