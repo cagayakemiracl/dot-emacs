@@ -25,9 +25,6 @@
 ;;; Code:
 
 ;; auto-insert
-(setq user-id-string "cagayakemiracl")
-(setq user-full-name "Hiromasa Nakahara")
-(setq user-mail-address "cagayakemiracl@gmail.com")
 (require 'autoinsert)
 (auto-insert-mode 1)
 (setq auto-insert-directory "~/.emacs.d/template/")
