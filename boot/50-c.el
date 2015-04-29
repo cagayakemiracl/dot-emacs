@@ -25,11 +25,9 @@
 ;;; Code:
 
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.mm$" . c++-mode))
 
 (require 'google-c-style)
-;(add-hook 'c-mode-common-hook 'google-set-c-style)
-;(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
 (add-hook 'c-mode-hook 'google-set-c-style)
 (add-hook 'c-mode-hook 'google-make-newline-indent)
 
@@ -41,47 +39,51 @@
 (setq c-eldoc-cpp-command "/usr/bin/cpp")
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
 
-(defun get-include-dirs ()
-  (let* ((command-result (shell-command-to-string "echo \"\" | clang++ -v -x c++ -E -"))
-         (start-string "#include <...> search starts here:\n")
-         (end-string "End of search list.\n")
-         (start-pos (string-match start-string command-result))
-         (end-pos (string-match end-string command-result))
-         (include-string (substring command-result (+ start-pos (length start-string)) end-pos)))
-    (split-string include-string)))
-
-(setq all-include-dir (append '("." "/usr/local/include/QtGui" "/usr/local/include/QtCore") (get-include-dirs)))
-(setq my-c-flags
-	  (mapcar (lambda (item) (concat "-I" item)) all-include-dir))
-
-(require 'company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
-(setq company-c-headers-path-system all-include-dir)
-(setq company-clang-arguments '("-std=c++11" "-pthread"))
-(setq company-clang-arguments (append company-clang-arguments my-c-flags))
-
 (defun flycheck-cc-mode-setup ()
   (setq flycheck-clang-language-standard "c++11")
-  ;(setq flycheck-clang-standard-library "libc++")
-  (setq flycheck-clang-include-path all-include-dir)
-  )
-(add-hook 'c-mode-common-hook 'flycheck-cc-mode-setup)
+	)
+
+(add-hook 'c++-mode-hook 'flycheck-cc-mode-setup)
+
+(custom-set-variables
+ '(flycheck-c/c++-googlelint-executable "/usr/local/bin/cpplint.py"))
+
+(eval-after-load 'flycheck
+  '(progn
+     (require 'flycheck-google-cpplint)
+     ;; Add Google C++ Style checker.
+     ;; In default, syntax checked by Clang and Cppcheck.
+     (flycheck-add-next-checker 'c/c++-clang
+                                'c/c++-googlelint 'append)))
+
+(require 'auto-complete-clang-async)
+(require 'auto-complete-c-headers)
+
+(defun ac-cc-mode-setup ()
+  (add-to-list 'ac-sources 'ac-source-clang-async)
+	(add-to-list 'ac-sources 'ac-source-c-headers)
+  (ac-clang-launch-completion-process)
+)
+
+(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
 
 ;; ctags update
 (add-hook 'c-mode-common-hook 'turn-on-ctags-auto-update-mode)
 (add-hook 'c-mode-common-hook 'highlight-symbol-mode)
-	  
-;; Use this parameter as C++ default
-(quickrun-add-command "c++/c11"
-                      '((:command . "clang++")
-                        (:exec    . ("%c -std=c++11 -pthread %o -o %e %s"
-                                     "%e %a"))
-                        (:remove  . ("%e")))
-                      :default "c++")
+
+(add-hook 'c-mode-common-hook 'highlight-indentation-current-column-mode)
+(add-hook 'c-mode-common-hook 'highlight-indentation-mode)
 
 (require 'clang-format)
 (custom-set-variables '(clang-format-style "Google"))
 (global-set-key  (kbd "<f6>") 'clang-format-buffer)
+
+(require 'cpputils-cmake)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (if (derived-mode-p 'c-mode 'c++-mode)
+                (cppcm-reload-all)
+              )))
 
 (provide '50-c)
 ;;; 50-c.el ends here
