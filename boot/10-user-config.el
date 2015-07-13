@@ -28,5 +28,8 @@
 (setq user-full-name "Hiromasa Nakahara")
 (setq user-mail-address "cagayakemiracl@gmail.com")
 
+(setq auto-backup-files nil)
+(setq auto-save-files nil)
+
 (provide '10-user-config)
 ;;; 10-user-config.el ends here
