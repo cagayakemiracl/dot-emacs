@@ -49,5 +49,10 @@
 		 (require 'tern-auto-complete)
 		 (tern-ac-setup)))
 
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
