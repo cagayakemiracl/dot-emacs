@@ -29,6 +29,7 @@
 
 ;; popwin
 (push '("*quickrun*") popwin:special-display-config)
+(setq quickrun-timeout-seconds -1)
 
 (provide 'init-quickrun)
 ;;; init-quickrun.el ends here
