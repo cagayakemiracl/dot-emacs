@@ -57,9 +57,9 @@
 (setq web-mode-enable-current-element-highlight t)
 
 (setq web-mode-ac-sources-alist
-  '(("php" . (ac-source-yasnippet ac-source-php-auto-yasnippets))
-    ("html" . (ac-source-emmet-html-aliases ac-source-emmet-html-snippets))
-    ("css" . (ac-source-css-property ac-source-emmet-css-snippets))))
+			'(("php" . (ac-source-yasnippet ac-source-php-auto-yasnippets))
+				("html" . (ac-source-emmet-html-aliases ac-source-emmet-html-snippets))
+				("css" . (ac-source-css-property ac-source-emmet-css-snippets))))
 
 (add-hook 'web-mode-before-auto-complete-hooks
           '(lambda ()
@@ -76,6 +76,11 @@
 (add-hook 'css-mode-hook  'rainbow-mode)
 (add-hook 'html-mode-hook 'rainbow-mode)
 (add-hook 'web-mode-hook 'rainbow-mode)
+
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
 
 (provide 'init-web)
 ;;; init-web.el ends here
