@@ -28,5 +28,8 @@
 (global-set-key (kbd "C-x C-z") 'open-junk-file)
 (global-set-key "\C-m" 'newline-and-indent)
 
+(setq suggest-key-bindings t)
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (provide 'init-key)
 ;;; init-key.el ends here
