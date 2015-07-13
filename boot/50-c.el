@@ -35,18 +35,15 @@
 (add-hook 'c++-mode-hook 'google-make-newline-indent)
 
 ;; eldoc
-(load "c-eldoc")
 (setq c-eldoc-cpp-command "/usr/bin/cpp")
+(load "c-eldoc")
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
 
 (defun flycheck-cc-mode-setup ()
-  (setq flycheck-clang-language-standard "c++11")
+  (setq flycheck-clang-language-standard "c++14")
 	)
 
 (add-hook 'c++-mode-hook 'flycheck-cc-mode-setup)
-
-(custom-set-variables
- '(flycheck-c/c++-googlelint-executable "/usr/local/bin/cpplint.py"))
 
 (eval-after-load 'flycheck
   '(progn
@@ -63,7 +60,7 @@
   (add-to-list 'ac-sources 'ac-source-clang-async)
 	(add-to-list 'ac-sources 'ac-source-c-headers)
   (ac-clang-launch-completion-process)
-)
+	)
 
 (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
 
@@ -76,7 +73,11 @@
 
 (require 'clang-format)
 (custom-set-variables '(clang-format-style "Google"))
-(global-set-key  (kbd "<f6>") 'clang-format-buffer)
+(add-hook 'c-mode-common-hook
+					'(lambda ()
+						(define-key c-mode-map (kbd "<f6>") 'clang-format-buffer)
+						(define-key c++-mode-map (kbd "<f6>") 'clang-format-buffer)
+						))
 
 (require 'cpputils-cmake)
 (add-hook 'c-mode-common-hook
