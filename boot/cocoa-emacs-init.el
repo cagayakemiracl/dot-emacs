@@ -26,11 +26,8 @@
 
 ;; key
 (when (eq system-type 'darwin)     ; もし、システムが Mac のとき
-	(setq mac-command-key-is-meta nil) ; コマンドキーをメタにしない
 	(setq mac-option-modifier 'meta)   ; オプションキーをメタに
-	(setq mac-command-modifier 'super) ; コマンドキーを Super に
-	(setq mac-pass-control-to-system t)) ; コントロールキーを Mac ではなく Emacs に渡す
-(define-key global-map [(super a)] 'anything)
+	(setq mac-command-modifier 'super)) ; コマンドキーを Super に
 
 ;; utf-8
 (require 'ucs-normalize) 
@@ -38,8 +35,6 @@
 (setq locale-coding-system 'utf-8-hfs)
 
 (set-frame-position (selected-frame) 0 0)
-
-(setq x-select-enable-primary t)
 
 ;; x-popupで死ぬ
 (defadvice yes-or-no-p (around prevent-dialog activate)
