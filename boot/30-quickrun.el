@@ -28,6 +28,7 @@
 (global-set-key (kbd "<f5>") 'quickrun)
 
 ;; popwin
+(require 'popwin)
 (push '("*quickrun*") popwin:special-display-config)
 (setq quickrun-timeout-seconds -1)
 

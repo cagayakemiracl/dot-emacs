@@ -47,7 +47,7 @@
 			(add-hook 'after-save-hook 'revert-compiled-coffee nil t)))
 
 
-;; auto complete
+(require 'auto-complete)
 (add-to-list 'ac-modes 'coffee-mode)
 (add-hook 'coffee-mode-hook
 		  '(lambda ()

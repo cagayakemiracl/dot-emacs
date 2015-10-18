@@ -24,16 +24,16 @@
 
 ;;; Code:
 
-(autoload 'processing-mode "processing-mode" "Processing mode" t)
-(add-to-list 'auto-mode-alist '("\\.pde$" . processing-mode))
+(require 'processing-mode)
 
 (setq processing-location "/usr/bin/processing-java")
 (setq processing-application-dir "/Applications/Processing.app")
-(setq processing-sketch-dir "~/Documents/Processing")
+(setq processing-sketchbook-dir "~/Documents/Processing")
 
 (autoload 'processing-snippets-initialize "processing-snippets" nil nil nil)
 (eval-after-load 'yasnippet '(processing-snippets-initialize))
 
+(require 'auto-complete)
 (defun processing-mode-init ()
   (make-local-variable 'ac-sources)
   (setq ac-sources '(ac-source-dictionary ac-source-yasnippet))

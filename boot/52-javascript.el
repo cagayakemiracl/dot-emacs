@@ -50,6 +50,7 @@
 		 (tern-ac-setup)))
 
 ;; disable jshint since we prefer eslint checking
+(require 'flycheck)
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
     '(javascript-jshint)))

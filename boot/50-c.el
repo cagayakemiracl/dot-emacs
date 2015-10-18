@@ -35,10 +35,11 @@
 (add-hook 'c++-mode-hook 'google-make-newline-indent)
 
 ;; eldoc
+(require 'c-eldoc)
 (setq c-eldoc-cpp-command "/usr/bin/cpp")
-(load "c-eldoc")
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
 
+(require 'flycheck)
 (defun flycheck-cc-mode-setup ()
   (setq flycheck-clang-language-standard "c++14")
 	)
@@ -87,4 +88,5 @@
               )))
 
 (provide '50-c)
+
 ;;; 50-c.el ends here

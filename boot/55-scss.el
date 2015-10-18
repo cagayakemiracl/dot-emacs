@@ -39,7 +39,7 @@
 (add-hook 'scss-mode-hook
 					'(lambda() (scss-custom)))
 
-;; auto complete
+(require 'auto-complete)
 (add-to-list 'ac-modes 'scss-mode)
 (add-hook 'scss-mode-hook
 		  '(lambda ()

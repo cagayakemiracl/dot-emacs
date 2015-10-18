@@ -30,6 +30,7 @@
 (setq php-mode-force-pear t) ;PEAR規約のインデント設定にする
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode)) ;*.phpのファイルのときにphp-modeを自動起動する
 
+(require 'auto-complete)
 (add-to-list 'ac-modes 'php-mode)
 (add-hook 'php-mode-hook
 		  (lambda ()

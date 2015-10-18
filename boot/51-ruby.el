@@ -68,7 +68,7 @@
   (ruby-indent-line t)
   (end-of-line))
 
-;; auto complete
+(require 'auto-complete)
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-hook 'enh-ruby-mode-hook
 		  '(lambda ()

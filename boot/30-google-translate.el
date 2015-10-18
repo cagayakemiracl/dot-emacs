@@ -36,6 +36,7 @@
  '(google-translate-default-target-language "ja"))
 
 ;; popwin
+(require 'popwin)
 (push '("*Google Translate*") popwin:special-display-config)
 
 (provide 'init-google-translate)
