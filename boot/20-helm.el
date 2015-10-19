@@ -1,9 +1,9 @@
-;;; linux-config.el ---                              -*- lexical-binding: t; -*-
+;;; 20-helm.el ---                                   -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015  Hiromasa Nakahara
 
 ;; Author: Hiromasa Nakahara <cagayakemiracl@gmail.com>
-;; Keywords: config
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,13 @@
 
 ;;; Code:
 
-(set-frame-parameter nil 'fullscreen 'maximized)
+(require 'helm-mode)
+(require 'helm-config)
+(helm-mode 1)
 
-(provide 'linux-config)
-;;; linux-config.el ends here
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-read-file-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+
+(provide '20-helm)
+;;; 20-helm.el ends here

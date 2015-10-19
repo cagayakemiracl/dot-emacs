@@ -1,4 +1,4 @@
-;;; init-ctags.el --- 
+;;; init-ctags.el ---
 
 ;; Copyright (C) 2014  Hiromasa Nakahara
 
@@ -28,10 +28,6 @@
 (require 'ctags-update)
 (autoload 'turn-on-ctags-auto-update-mode "ctags-update" "turn on `ctags-auto-update-mode'." t)
 (add-hook 'emacs-lisp-mode-hook  'turn-on-ctags-auto-update-mode)
-(require 'anything-exuberant-ctags)
-(setq anything-exuberant-ctags-enable-tag-file-dir-cache t)
-(setq anything-exuberant-ctags-cache-tag-file-dir "~/.emacs/cache/")
-(define-key global-map [(control @)] 'anything-exuberant-ctags-select-from-here)
 
-(provide 'init-ctags)
-;;; init-ctags.el ends here
+(provide '25-ctags)
+;;; 25-ctags.el ends here
