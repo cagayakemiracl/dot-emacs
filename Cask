@@ -36,7 +36,7 @@
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
-(depends-on "flycheck-color-mode-line" :git "https://github.com/flycheck/flycheck-color-mode-line.git")
+(depends-on "flycheck-color-mode-line")
 (depends-on "flycheck-google-cpplint")
 (depends-on "flycheck-pos-tip")
 (depends-on "flycheck-pyflakes")
