@@ -25,8 +25,8 @@
 ;;; Code:
 
 ;; ruby-mode
-(autoload 'enh-ruby-mode "enh-ruby-mode"
-  "Mode for editing ruby source files" t)
+(require 'enh-ruby-mode)
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rb$latex " . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
