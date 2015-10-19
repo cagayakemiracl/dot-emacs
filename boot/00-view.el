@@ -41,6 +41,8 @@
                     :foreground "#800"
                     :height 0.9)
 
+(set-frame-parameter nil 'fullscreen 'maximized)
+
 ;; 背景を透明にする
 (add-to-list 'default-frame-alist '(alpha . (0.85 0.70)))
 
