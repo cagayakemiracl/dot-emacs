@@ -1,5 +1,7 @@
 #!/bin/sh
 
-mkdir ~/.pandoc/
-mkdir ~/.pandoc/templates/
-cp pandoc/default.html5 ~/.pandoc/templates/.
+curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+export PATH="~/.cask/bin:$PATH"
+cd ~/.emacs.d/
+cask upgrade
+cask install
