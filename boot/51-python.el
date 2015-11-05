@@ -29,6 +29,8 @@
 ;; flycheck
 (require 'flycheck-pyflakes)
 (require 'jedi)
+(require 'py-autopep8)
+(require 'python)
 
 (add-hook 'python-mode-hook 'flycheck-mode)
 (add-to-list 'flycheck-disabled-checkers 'python-flake8)
@@ -36,8 +38,14 @@
 
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+(setq jedi:environment-root "jedi")  ; or any other name you like
+(setq jedi:environment-virtualenv
+      (append python-environment-virtualenv
+              '("--python" "/usr/local/bin/python3")))
 
-;; highlight-indentation
+(define-key python-mode-map (kbd "<f6>") 'py-autopep8) 
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 (provide 'init-python)

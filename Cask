@@ -78,6 +78,7 @@
 (depends-on "powerline")
 (depends-on "prodigy")
 (depends-on "projectile")
+(depends-on "py-autopep8")
 (depends-on "python-environment")
 (depends-on "quickrun")
 (depends-on "rainbow-delimiters")

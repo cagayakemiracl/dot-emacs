@@ -19,3 +19,4 @@ __pycache__/
 deepin-emacs
 eshell
 tramp
+.python-environments
