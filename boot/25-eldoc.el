@@ -25,10 +25,9 @@
 ;;; Code:
 
 ;; eldoc
-;; Use Emacs23's eldoc
 (require 'eldoc)
-;; (install-elisp-from-emacswiki "eldoc-extension.el")
 (require 'eldoc-extension)
+
 (setq eldoc-idle-delay 0.5)
 (setq eldoc-echo-area-use-multiline-p t)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
