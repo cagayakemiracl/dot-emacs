@@ -36,6 +36,10 @@
 (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 
+(quickrun-add-command "python"
+          '((:command . "python3"))
+          :override t)
+
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 (setq jedi:environment-root "jedi")  ; or any other name you like
