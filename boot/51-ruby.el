@@ -83,10 +83,6 @@
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
-;; ctags update
-(add-hook 'enh-ruby-mode-hook 'turn-on-ctags-auto-update-mode)
-(add-hook 'enh-ruby-mode-hook 'highlight-symbol-mode)
-
 (require 'ruby-refactor)
 (add-hook 'enh-ruby-mode-hook 'ruby-refactor-mode-launch)
 

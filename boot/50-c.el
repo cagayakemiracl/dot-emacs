@@ -34,11 +34,6 @@
 (add-hook 'c++-mode-hook 'google-set-c-style)
 (add-hook 'c++-mode-hook 'google-make-newline-indent)
 
-;; eldoc
-(require 'c-eldoc)
-(setq c-eldoc-cpp-command "/usr/bin/cpp")
-(add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)
-
 (require 'flycheck)
 (defun flycheck-cc-mode-setup ()
   (setq flycheck-clang-language-standard "c++14")
@@ -64,10 +59,6 @@
 	)
 
 (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-
-;; ctags update
-(add-hook 'c-mode-common-hook 'turn-on-ctags-auto-update-mode)
-(add-hook 'c-mode-common-hook 'highlight-symbol-mode)
 
 (add-hook 'c-mode-common-hook 'highlight-indentation-current-column-mode)
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)

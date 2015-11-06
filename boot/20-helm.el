@@ -26,11 +26,21 @@
 
 (require 'helm-mode)
 (require 'helm-config)
+(require 'helm-swoop)
+(require 'ace-isearch)
+
 (helm-mode 1)
+(global-ace-isearch-mode +1)
+(helm-migemo-mode 1)
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-read-file-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+
+(global-set-key (kbd "M-i") 'helm-swoop)
+(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
 
 (provide '20-helm)
 ;;; 20-helm.el ends here
