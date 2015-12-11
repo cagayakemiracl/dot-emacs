@@ -38,8 +38,6 @@
 (depends-on "flycheck-pyflakes")
 (depends-on "flycheck-tip")
 (depends-on "git-commit")
-(depends-on "git-commit-mode")
-(depends-on "git-rebase-mode")
 (depends-on "gitignore-mode")
 (depends-on "google-c-style")
 (depends-on "helm")
