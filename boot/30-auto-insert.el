@@ -25,27 +25,21 @@
 ;;; Code:
 
 ;; auto-insert
+
 (require 'autoinsert)
 (auto-insert-mode 1)
 (setq auto-insert-directory "~/.emacs.d/template/")
-;; 各ファイルによってテンプレートを切り替える
 (setq auto-insert-alist
-	  (nconc '(
-			   ("\\.[Cc]+[Pp]*\\'"    . ["template.cpp" my-template])
-			   ("\\.h$"      . ["template.h" my-template])
-			   ("\\.rb$"     . ["template.rb" my-template])
-			   ("\\.py$"     . ["template.py" my-template])
-			   ("\\.coffee$" . ["template.coffee" my-template])
-			   ("\\.v$"      . ["template.v" my-template])
-			   ("\\.cs$"     . ["template.cs" my-template])
-			   ("\\.html$"   . ["template.html" my-template])
-			   ("\\.pl$"     . ["template.pl" my-template])
-			   ("\\.php$"    . ["template.php" my-template])
-			   ) auto-insert-alist))
+			(nconc '(
+							 ("\\.[Cc]+[Pp]*\\'" . ["template.cpp" my-template])
+							 ("\\.rb$" . ["template.rb" my-template])
+							 ("\\.py$" . ["template.py" my-template])
+							 ("\\.html$" . ["template.html" my-template])
+							 ) auto-insert-alist))
 (defvar template-replacements-alists
   '(("%file%"             . (lambda () (file-name-nondirectory (buffer-file-name))))
-	("%file-without-ext%" . (lambda () (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
-	("%include-guard%"    . (lambda () (format "%s_H_" (upcase (file-name-sans-extension (file-name-nondirectory buffer-file-name))))))
+		("%file-without-ext%" . (lambda () (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
+		("%include-guard%"    . (lambda () (format "%s_H_" (upcase (file-name-sans-extension (file-name-nondirectory buffer-file-name))))))
     ("%date%" . (lambda() (substring (current-time-string) -4)))
     ("%mail%" . (lambda () (identity user-mail-address)))
     ("%name%" . (lambda () (identity user-full-name)))
@@ -53,10 +47,10 @@
 (defun my-template ()
   (time-stamp)
   (mapc #'(lambda(c)
-			(progn
-			  (goto-char (point-min))
-			  (replace-string (car c) (funcall (cdr c)) nil)))
-		template-replacements-alists)
+						(progn
+							(goto-char (point-min))
+							(replace-string (car c) (funcall (cdr c)) nil)))
+				template-replacements-alists)
   (goto-char (point-max))
   (message "done."))
 (add-hook 'find-file-hook 'auto-insert)

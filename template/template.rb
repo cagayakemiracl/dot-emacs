@@ -1,6 +1,4 @@
-#!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 # Copyright (c) %date% %id% All Rights Reserved.
 # $Mail: <%mail%>
-
