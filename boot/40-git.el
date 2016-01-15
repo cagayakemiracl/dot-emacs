@@ -27,10 +27,6 @@
 (require 'git-gutter-fringe)
 
 (global-git-gutter-mode t)
-
-(custom-set-variables
- '(git-gutter:update-interval 2))
-
 (setq git-gutter-fr:side 'right-fringe)
 
 (provide '40-git)
