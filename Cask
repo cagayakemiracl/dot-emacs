@@ -40,6 +40,8 @@
 (depends-on "flycheck-pyflakes")
 (depends-on "flycheck-tip")
 (depends-on "git-commit")
+(depends-on "git-gutter")
+(depends-on "git-gutter-fringe")
 (depends-on "gitignore-mode")
 (depends-on "google-c-style")
 (depends-on "helm")
